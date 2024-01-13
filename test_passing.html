@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+    <!-- SYNTAX HIGHLIGHTING -->
+    <script src="./codemirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="./codemirror/lib/codemirror.css">
+    <script src="./codemirror/mode/python/python.js"></script>
+    <script>
+        const CODEMIRROR_PARAMS = {
+        mode: "python",
+        tabSize: 4,
+        indentWithTabs: 0,
+        lineNumbers: 1,
+        indentUnit: 4,
+        }
+        const codemirrorHandler = function (instance, changeObj) {
+            instance.getTextArea().parentNode.querySelector("textarea").value = instance.getValue();
+        }
+    </script>
+    <!-- FORMULAS SUPPORT -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+    <script>
+        const renderFormula = function (e) {
+            input = e.srcElement;
+            katex.render(input.value, input.parentNode.querySelector(".preview"), {
+                throwOnError: false,
+                strict: "ignore"
+            });
+        }
+    </script>
+    <script>
+        function texSwitch(checkbox) {
+            let textInput = checkbox.parentNode.parentNode.querySelector('input[type="text"]');
+            let preview = checkbox.parentNode.parentNode.querySelector(".preview");
+            if (checkbox.checked) {
+                preview.removeAttribute("hidden");
+                textInput.addEventListener("input", renderFormula)
+                katex.render(textInput.value, textInput.parentNode.querySelector(".preview"), {throwOnError: false});
+            }
+            else {
+                preview.setAttribute("hidden", "");
+                textInput.removeEventListener("input", renderFormula)
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="time-left"><span style="color: grey">Осталось времени:</span>&nbsp;&nbsp;<span id="timer">15:04</span></div>
+    <div class="questions">
+        <div class="question text">
+            <b class="title">Выберете подходящий вариант ответа</b>
+            <p class="description">Сначала подумайте, вспомните основные правила</p>
+            <input type="text">
+            <div class="tex-checkbox">
+                <label for="for-text-1">Использовать форматирование TeX</label>
+                <input type="checkbox" name="for-text-1" id="for-text-1" onchange="texSwitch(this);">
+            </div>
+            <p class="preview" hidden></p>
+        </div>
+        <div class="question code">
+            <b class="title">Напишите функцию</b>
+            <p class="description">Сначала подумайте, вспомните основные правила</p>
+            <textarea name="" id="code-2" cols="30" rows="10" hidden></textarea>
+            <textarea name="" id="textarea-code-2" cols="30" rows="10"></textarea>
+            <script>
+                CodeMirror.fromTextArea(document.querySelector("#textarea-code-2"), CODEMIRROR_PARAMS).on("change", codemirrorHandler)
+            </script>
+        </div>
+        <div class="question choose one">
+            <b class="title">Выберете верный ответ</b>
+            <p class="description">Сначала подумайте, вспомните основные правила</p>
+            <fieldset>
+                <div>
+                    <input type="radio" name="radio-1" id="radio-1-var-1">
+                    <label for="radio-1-var-1">Вариант 1</label>
+                </div>
+                <div>
+                    <input type="radio" name="radio-1" id="radio-1-var-2">
+                    <label for="radio-1-var-2">Вариант 2</label>
+                </div>
+                <div>
+                    <input type="radio" name="radio-1" id="radio-1-var-3">
+                    <label for="radio-1-var-3">Вариант 3</label>
+                </div>
+                <div>
+                    <input type="radio" name="radio-1" id="radio-1-var-4">
+                    <label for="radio-1-var-4">Вариант 4</label>
+                </div>
+            </fieldset>
+        </div>
+        <div class="question choose many">
+            <b class="title">Выберете верные ответы</b>
+            <p class="description">Сначала подумайте, вспомните основные правила</p>
+            <fieldset>
+                <div>
+                    <input type="checkbox" name="checkbox-1" id="checkbox-1-var-1">
+                    <label for="checkbox-1-var-1">Вариант 1</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="checkbox-1" id="checkbox-1-var-2">
+                    <label for="checkbox-1-var-2">Вариант 2</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="checkbox-1" id="checkbox-1-var-3">
+                    <label for="checkbox-1-var-3">Вариант 3</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="checkbox-1" id="checkbox-1-var-4">
+                    <label for="checkbox-1-var-4">Вариант 4</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="checkbox-1" id="checkbox-1-var-5">
+                    <label for="checkbox-1-var-5">Вариант 5</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="checkbox-1" id="checkbox-1-var-6">
+                    <label for="checkbox-1-var-6">Вариант 6</label>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="end-button">
+        <input type="submit" class="button primary" value="Завершить тест">
+    </div>
+</body>
+<!-- COUNTDOWN -->
+<script>
+    let update = setInterval(function() {
+        let finishTime = new Date();
+        finishTime.setHours(20, 32, 0)
+        let now = new Date()
+        let timeLeft = finishTime - now
+        if (timeLeft <= 0) {
+            timer.innerHTML = 'Время на выполнение истекло'
+            timer.style.color = 'red'
+            return
+        }
+        let hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = String(Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0"); 
+        let seconds = String(Math.floor((timeLeft % (1000 * 60)) / 1000)).padStart(2, "0");
+        timer = document.querySelector("#timer");
+        timer.innerHTML = hours === 0 ? minutes + ':' + seconds : hours + ':' + minutes + ':' + seconds
+    })
+</script>
+</html>

@@ -1,0 +1,139 @@
+@font-face {
+    font-family: HSESans;
+    src: url(fonts/HSESans-Regular.otf);
+}
+
+@font-face {
+    font-family: HSESans;
+    src: url(fonts/HSESans-Bold.otf);
+    font-weight: bolder;
+}
+
+@font-face {
+    font-family: HSESans;
+    src: url(fonts/HSESans-SemiBold.otf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: HSESans;
+    src: url(fonts/HSESans-Thin.otf);
+    font-weight: thin;
+}
+
+@font-face {
+    font-family: HSESans;
+    src: url(fonts/HSESans-Italic.otf);
+    font-style: italic;
+}
+
+body {
+    font-family: "HSESans";
+    padding: 10%
+}
+
+.question {
+    padding: 10px;
+    border: 2px solid lightgrey;
+    border-radius: 5px;
+    font-size: x-large;
+}
+
+.question p {
+    margin: 0px;
+}
+
+
+.question.text input[type="text"] {
+    width: 80%;
+    padding: 6px 10px;
+    margin: 1%;
+    box-sizing: border-box;
+    border: 2px solid grey;
+    border-radius: 3px;
+    font-size: large;
+}
+
+
+.question.code .CodeMirror {
+    margin: 1%;
+    border: 2px solid grey;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.question.code .CodeMirror-focused {
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.question.choose {
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        border: 0
+    }
+
+    input {
+        margin: 8px
+    }
+
+    label {
+        font: large
+    }
+}
+
+input[type="checkbox"] {
+    width: fit-content;
+    height: fit-content;
+}
+
+input[type="radio"] {
+    width: fit-content;
+    height: fit-content;
+}
+
+.tex-checkbox {
+    font-style: italic;
+    font-size: medium;
+}
+
+#time-left {
+    font-size: medium;
+    font-weight: bold;
+    display: flex;
+    align-items: end;
+    justify-content: right;
+}
+
+.questions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.button {
+    font-size: medium;
+    font-family: "HSESans";
+    font-weight: bold;
+    padding: 0.5rem;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.button.primary {
+    background-color: white;
+}
+
+.end-button {
+    display: flex;
+    justify-content: end;
+    margin: 15px 0px
+}
+
+.add-button {
+    .button {
+        width: 100%;
+        font-size: large;
+    }
+}
