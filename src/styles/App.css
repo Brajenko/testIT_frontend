@@ -1,0 +1,198 @@
+@font-face {
+    font-family: HSESans;
+    src: "./fonts/HSESans-Regular.otf";
+}
+
+@font-face {
+    font-family: HSESans;
+    src: "./fonts/HSESans-Bold.otf";
+    font-weight: bolder;
+}
+
+@font-face {
+    font-family: HSESans;
+    src: "./fonts/HSESans-SemiBold.otf";
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: HSESans;
+    src: "./fonts/HSESans-Thin.otf";
+    font-weight: thin;
+}
+
+@font-face {
+    font-family: HSESans;
+    src: "./fonts/HSESans-Italic.otf";
+    font-style: italic;
+}
+
+body {
+    font-family: "HSESans";
+    padding: 10%
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px;
+    border: 2px solid lightgrey;
+    border-radius: 5px;
+    font-size: x-large;
+}
+
+.question p {
+    margin: 0px;
+}
+
+
+.question.text input[type="text"] {
+    padding: 0.4em;
+    width: 80%;
+    box-sizing: border-box;
+    border: 2px solid grey;
+    border-radius: 3px;
+    font-size: large;
+}
+
+
+.question.code .CodeMirror {
+    border: 2px solid grey;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.question.code .CodeMirror-focused {
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.question.choose {
+    input {
+        margin: 8px
+    }
+
+    label {
+        font: large
+    }
+}
+
+input[type="checkbox"] {
+    width: fit-content;
+    height: fit-content;
+}
+
+input[type="radio"] {
+    width: fit-content;
+    height: fit-content;
+}
+
+.tex-checkbox {
+    font-style: italic;
+    font-size: medium;
+}
+
+#time-left {
+    font-size: medium;
+    font-weight: bold;
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
+}
+
+.questions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.button {
+    font-size: medium;
+    font-family: "HSESans";
+    font-weight: bold;
+    padding: 0.5rem;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.button.primary {
+    background-color: white;
+}
+
+.end-button {
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px 0px
+}
+
+.add-button {
+    .button {
+        width: 100%;
+        font-size: large;
+    }
+    margin-top: 5px;
+}
+
+.question.editable {
+    .title, .description {
+        min-height: 1.1em;
+        display: inline-block;
+    }
+}
+
+select {
+    border-radius: 5px;
+    font-size: medium;
+}
+
+.choose-type {
+    font-weight: bold;
+    font-size: medium;
+}
+
+.question-body {
+    padding: 1.5% 4%;
+}
+
+.input-text-answers {
+    font-size: medium;
+
+}
+
+input[type="number"] {
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 2em;
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.variants {
+    display: block;
+    gap: 2px;
+    
+    input {
+        height: 1.2em;
+        border-radius: 5px;
+        border: 2px solid grey;
+        margin-right: 4px;
+    }
+}
+
+.is-variants-right {
+    input[type="radio"] {
+        margin-right: 200px;
+    }
+}
+
+.variant {
+    display: flex;
+    gap: 8px;
+    margin: 5px 0px;
+}
