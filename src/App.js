@@ -1,5 +1,6 @@
 import React from "react";
 import Question from "./components/Question";
+import Button from "./components/UI/Button"
 import "./styles/App.css"
 
 function App() {
@@ -62,6 +63,9 @@ function App() {
       <div className="questions">
         { questionsToRender }
       </div>
+    <div className="end-button">
+      <Button text={"Завершить выполнение"}></Button>
+    </div>
     </div>
   );
 }
